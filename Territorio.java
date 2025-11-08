@@ -27,9 +27,14 @@ public class Territorio
     /* Metodo principale per eseguire il programma. */
     public static void main(String args[]) 
     { 
-        Territorio t = new Territorio(257.3, 12250); // Creazione di un'istanza della classe Territorio
-        System.out.println(t.superficie); 
-        System.out.println(t.abitanti); 
-        System.out.println(t.densita());
+        Territorio t1 = new Territorio(257.3, 12250); // Creazione di un'istanza della classe Territorio
+        System.out.println(t1.superficie); 
+        System.out.println(t1.abitanti); 
+        System.out.println(t1.densita());
+
+        Territorio t2 = new Territorio(512.5, 34000); // Creazione di un'altra istanza della classe Territorio
+        System.out.println(t2.superficie);  
+        System.out.println(t2.abitanti);
+        System.out.println(t2.densita());
     }
 }
