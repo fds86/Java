@@ -109,6 +109,92 @@ javac NomeFile.java
 java NomeFile
 ```
 
+## 7. Modificatori di Accesso
+Controllano la visibilità e l'accessibilità di attributi e metodi:
+
+### `private`
+- L'attributo/metodo è accessibile solo dentro la classe
+- Protegge i dati da accessi non autorizzati dall'esterno
+- Buona pratica: dichiarare gli attributi come `private` e fornire metodi pubblici per accedervi
+
+```java
+public class Territorio {
+    private int dim;        // accessibile solo dentro questa classe
+    
+    public void show() {    // accessibile da fuori
+        System.out.println(dim);
+    }
+}
+```
+
+### `public`
+- L'attributo/metodo è accessibile da qualunque classe
+- Usare con cautela per non esporre dati sensibili
+
+## 8. Cicli in Java
+Permettono di ripetere blocchi di codice più volte.
+
+### Ciclo `for`
+Usato quando conosci il numero di iterazioni.
+```java
+for(int i = 1; i <= 10; i++) {
+    System.out.println("Iterazione: " + i);
+}
+```
+
+Struttura: `for(inizializzazione; condizione; incremento)`
+
+**Ciclo for annidato** (uno dentro l'altro):
+```java
+for(int i = 1; i <= 3; i++) {
+    for(int j = 1; j <= 3; j++) {
+        System.out.print(i * j + "\t");
+    }
+    System.out.println();
+}
+// Stampa una tabella 3x3
+```
+
+### Ciclo `while`
+Usato quando non conosci il numero di iterazioni, continua finché la condizione è vera.
+```java
+int i = 1;
+while(i <= 10) {
+    System.out.println("Iterazione: " + i);
+    i++;  // importante: incrementare per evitare loop infinito
+}
+```
+
+### Ciclo `do-while`
+Come `while`, ma esegue il codice almeno una volta, poi controlla la condizione.
+```java
+int i = 1;
+do {
+    System.out.println("Iterazione: " + i);
+    i++;
+} while(i <= 10);
+```
+
+La differenza da `while`:
+```java
+// while: controlla prima
+while(false) {
+    System.out.println("Non viene mai eseguito");
+}
+
+// do-while: esegue prima, poi controlla
+do {
+    System.out.println("Viene eseguito almeno una volta");
+} while(false);
+```
+
+## 9. Operatori comuni
+- **Incremento**: `i++` (aumenta di 1)
+- **Decremento**: `i--` (diminuisce di 1)
+- **Assegnazione**: `i = 5`
+- **Moltiplicazione**: `i * j`
+- **Confronto**: `i <= 10`, `i > 5`, `i == 3`
+
 ## Note Importanti
 - Java è case-sensitive (maiuscole e minuscole sono diverse)
 - Ogni file `.java` pubblico deve avere lo stesso nome della classe che contiene
@@ -118,6 +204,9 @@ public static void main(String[] args) {
     // Il programma inizia qui
 }
 ```
+- **Buona pratica**: usare `private` per gli attributi e `public` per i metodi che vuoi esporre
+- **Evitare loop infiniti**: assicurati che la condizione del ciclo diventi falsa
+- **Cicli annidati**: perfetti per lavorare con tabelle/matrici
 
 ---
 *Questo documento verrà aggiornato man mano che impariamo nuovi concetti.*
