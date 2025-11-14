@@ -188,12 +188,191 @@ do {
 } while(false);
 ```
 
-## 9. Operatori comuni
+## 9. Tipo di dato `boolean`
+Il tipo `boolean` può avere solo due valori: `true` (vero) o `false` (falso).
+
+Usato per:
+- Memorizzare risultati di condizioni
+- Controllare il flusso di un programma
+- Verificare stati (acceso/spento, valido/invalido, ecc.)
+
+```java
+boolean isPrimo = true;          // dichiarare una variabile booleana
+boolean isEven = (5 % 2 == 0);   // assegnare il risultato di una condizione
+boolean isBig = (10 > 5);        // true
+
+if(isPrimo) {
+    System.out.println("È un numero primo");
+}
+```
+
+**Operatori booleani:**
+- `true` e `false` — valori letterali
+- `!` (NOT) — nega il valore: `!true` = `false`
+- `&&` (AND) — entrambi devono essere true: `true && false` = `false`
+- `||` (OR) — almeno uno deve essere true: `true || false` = `true`
+
+Esempio dal programma dei numeri primi:
+```java
+while((j < i) && !divisibile) {   // continua mentre j < i E divisibile è false
+    // ...
+}
+```
+
+## 10. Operatori aritmetici
+Operatori per fare calcoli matematici:
+
+- **Addizione**: `a + b`
+- **Sottrazione**: `a - b`
+- **Moltiplicazione**: `a * b`
+- **Divisione**: `a / b` (restituisce intero se entrambi sono interi)
+- **Modulo** (`%`): **restituisce il resto della divisione**
+- **Incremento**: `i++` o `++i` (aumenta di 1)
+- **Decremento**: `i--` o `--i` (diminuisce di 1)
+
+### Operatore Modulo `%`
+Restituisce il **resto** della divisione tra due numeri.
+
+```java
+10 % 3 = 1    // 10 diviso 3 = 3 resto 1
+7 % 2 = 1     // 7 diviso 2 = 3 resto 1
+6 % 2 = 0     // 6 diviso 2 = 3 resto 0 (perfettamente divisibile)
+15 % 5 = 0    // 15 diviso 5 = 3 resto 0
+```
+
+**Utilizzo pratico:**
+- Verificare se un numero è pari: `numero % 2 == 0`
+- Verificare se un numero è divisibile: `numero % divisore == 0`
+- Trovare il resto di una divisione
+
+Esempio dal programma dei numeri primi:
+```java
+if(i % j == 0) divisibile = true;  // se i è perfettamente divisibile per j
+```
+
+## 11. Numeri Primi
+Un **numero primo** è un numero naturale **maggiore di 1** che è divisibile **solo per 1 e per se stesso**.
+
+**Esempi di numeri primi:**
+- `2` (unico numero primo pari)
+- `3, 5, 7, 11, 13, 17, 19, 23, 29, 31`...
+
+**Numeri NON primi:**
+- `1` (per definizione non è primo)
+- `4` (divisibile per 2)
+- `6` (divisibile per 2 e 3)
+- `8, 9, 10, 12, 14, 15`... (numeri composti)
+
+**Algoritmo di verifica (usato in Esercizio_3_2_4):**
+```java
+// Controlla se il numero i è primo
+boolean isPrimo = true;
+for(int j = 2; j < i; j++) {
+    if(i % j == 0) {           // se i è divisibile per j
+        isPrimo = false;        // allora non è primo
+        break;                  // esci dal ciclo
+    }
+}
+if(isPrimo) System.out.println(i);  // stampa se primo
+```
+
+## 9. Operatori comuni (riveduto)
 - **Incremento**: `i++` (aumenta di 1)
 - **Decremento**: `i--` (diminuisce di 1)
 - **Assegnazione**: `i = 5`
 - **Moltiplicazione**: `i * j`
+- **Modulo**: `i % j` (resto della divisione)
 - **Confronto**: `i <= 10`, `i > 5`, `i == 3`
+- **Negazione logica**: `!boolean` (inverte true/false)
+- **AND logico**: `condizione1 && condizione2`
+- **OR logico**: `condizione1 || condizione2`
+
+## 12. Istruzione `switch` e `break`
+
+Lo `switch` è un'istruzione di selezione che permette di eseguire codice diverso in base al valore di una variabile.
+
+### Sintassi base:
+```java
+switch (variabile) {
+    case valore1:
+        // codice se variabile == valore1
+        break;
+    case valore2:
+        // codice se variabile == valore2
+        break;
+    default:
+        // codice se nessun case corrisponde
+}
+```
+
+### Cosa fa `break`?
+- **`break`** interrompe immediatamente l'esecuzione dello `switch`
+- **Senza `break`** (fall-through): continua a eseguire i `case` successivi anche se non corrisponde
+
+### Esempio pratico (Esercizio_3_2_5):
+```java
+int x = 4;
+switch (x) {
+    case 1: 
+        System.out.println("dire"); 
+        break;
+    case 2: 
+        System.out.println("fare"); 
+        break;
+    case 3: 
+        System.out.println("baciare"); 
+        break;
+    case 4: 
+        System.out.println("lettera");  // ← x=4, quindi esegue questo
+        break;                          // ← e poi esce dallo switch
+    case 5: 
+        System.out.println("testamento"); 
+        break;
+    default: 
+        System.out.println("non so...");
+}
+// Output: lettera
+```
+
+### Cosa succederebbe SENZA break?
+```java
+int x = 4;
+switch (x) {
+    case 1: System.out.println("dire");      // non corrisponde, salta
+    case 2: System.out.println("fare");      // non corrisponde, salta
+    case 3: System.out.println("baciare");   // non corrisponde, salta
+    case 4: System.out.println("lettera");   // CORRISPONDE, esegue
+    case 5: System.out.println("testamento"); // CONTINUA (no break!)
+    default: System.out.println("non so...");  // E CONTINUA ANCHE QUI!
+}
+// Output:
+// lettera
+// testamento
+// non so...
+```
+
+Questo si chiama **fall-through** ed è quasi sempre un errore. Usa sempre `break`!
+
+### Quando `break` non serve?
+- Nel `default` se è l'ultimo (esce comunque)
+- Se intendi fare apposta il fall-through (raro, documenta bene!)
+
+```java
+switch (giorno) {
+    case "lunedì":
+    case "martedì":
+    case "mercoledì":
+    case "giovedì":
+    case "venerdì":
+        System.out.println("Giorno lavorativo");
+        break;
+    case "sabato":
+    case "domenica":
+        System.out.println("Weekend");
+        break;
+}
+// Qui il fall-through è intenzionale e logico!
+```
 
 ## Note Importanti
 - Java è case-sensitive (maiuscole e minuscole sono diverse)
