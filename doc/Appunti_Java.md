@@ -188,7 +188,35 @@ do {
 } while(false);
 ```
 
-## 9. Tipo di dato `boolean`
+## 9. Operatori e Tipi di Dato Fondamentali
+
+### Tipi di dato primitivi principali
+
+Java ha diversi tipi primitivi. I più comuni usati negli esercizi:
+
+**Tipi numerici interi:**
+- **`int`** — numeri interi da -2.147.483.648 a 2.147.483.647 (usato in tutti gli esercizi)
+- **`long`** — numeri interi più grandi (per valori molto grandi)
+
+**Tipi numerici decimali:**
+- **`double`** — numeri decimali (con precisione fino a 15 cifre)
+- **`float`** — numeri decimali (precisione minore, usa meno memoria)
+
+**Tipo logico:**
+- **`boolean`** — `true` o `false` (usato in Esercizio_3_2_4)
+
+**Tipo carattere:**
+- **`char`** — un singolo carattere: `'a'`, `'Z'`, `'1'`
+
+Esempio di dichiarazione:
+```java
+int numero = 42;           // numero intero
+double decimale = 3.14;    // numero con decimali
+boolean attivo = true;     // valore logico
+char lettera = 'A';        // singolo carattere
+```
+
+### Tipo di dato `boolean`
 Il tipo `boolean` può avere solo due valori: `true` (vero) o `false` (falso).
 
 Usato per:
@@ -206,20 +234,7 @@ if(isPrimo) {
 }
 ```
 
-**Operatori booleani:**
-- `true` e `false` — valori letterali
-- `!` (NOT) — nega il valore: `!true` = `false`
-- `&&` (AND) — entrambi devono essere true: `true && false` = `false`
-- `||` (OR) — almeno uno deve essere true: `true || false` = `true`
-
-Esempio dal programma dei numeri primi:
-```java
-while((j < i) && !divisibile) {   // continua mentre j < i E divisibile è false
-    // ...
-}
-```
-
-## 10. Operatori aritmetici
+### Operatori aritmetici
 Operatori per fare calcoli matematici:
 
 - **Addizione**: `a + b`
@@ -250,7 +265,28 @@ Esempio dal programma dei numeri primi:
 if(i % j == 0) divisibile = true;  // se i è perfettamente divisibile per j
 ```
 
-## 11. Numeri Primi
+### Operatori booleani (logici)
+- `true` e `false` — valori letterali
+- `!` (NOT) — nega il valore: `!true` = `false`
+- `&&` (AND) — entrambi devono essere true: `true && false` = `false`
+- `||` (OR) — almeno uno deve essere true: `true || false` = `true`
+
+Esempio dal programma dei numeri primi:
+```java
+while((j < i) && !divisibile) {   // continua mentre j < i E divisibile è false
+    // ...
+}
+```
+
+### Operatori di confronto
+- `==` — uguaglianza: `5 == 5` → `true`
+- `!=` — diversità: `5 != 3` → `true`
+- `<` — minore di: `5 < 10` → `true`
+- `>` — maggiore di: `5 > 10` → `false`
+- `<=` — minore o uguale: `5 <= 5` → `true`
+- `>=` — maggiore o uguale: `10 >= 5` → `true`
+
+## 10. Numeri Primi
 Un **numero primo** è un numero naturale **maggiore di 1** che è divisibile **solo per 1 e per se stesso**.
 
 **Esempi di numeri primi:**
@@ -276,22 +312,12 @@ for(int j = 2; j < i; j++) {
 if(isPrimo) System.out.println(i);  // stampa se primo
 ```
 
-## 9. Operatori comuni (riveduto)
-- **Incremento**: `i++` (aumenta di 1)
-- **Decremento**: `i--` (diminuisce di 1)
-- **Assegnazione**: `i = 5`
-- **Moltiplicazione**: `i * j`
-- **Modulo**: `i % j` (resto della divisione)
-- **Confronto**: `i <= 10`, `i > 5`, `i == 3`
-- **Negazione logica**: `!boolean` (inverte true/false)
-- **AND logico**: `condizione1 && condizione2`
-- **OR logico**: `condizione1 || condizione2`
-
-## 12. Istruzione `switch` e `break`
+## 11. Istruzione `switch` e `break`
 
 Lo `switch` è un'istruzione di selezione che permette di eseguire codice diverso in base al valore di una variabile.
 
-### Sintassi base:
+### Sintassi base
+
 ```java
 switch (variabile) {
     case valore1:
@@ -305,11 +331,13 @@ switch (variabile) {
 }
 ```
 
-### Cosa fa `break`?
+### Cosa fa `break`
+
 - **`break`** interrompe immediatamente l'esecuzione dello `switch`
 - **Senza `break`** (fall-through): continua a eseguire i `case` successivi anche se non corrisponde
 
-### Esempio pratico (Esercizio_3_2_5):
+### Esempio pratico (Esercizio_3_2_5)
+
 ```java
 int x = 4;
 switch (x) {
@@ -334,7 +362,8 @@ switch (x) {
 // Output: lettera
 ```
 
-### Cosa succederebbe SENZA break?
+### Cosa succederebbe SENZA break
+
 ```java
 int x = 4;
 switch (x) {
@@ -353,7 +382,8 @@ switch (x) {
 
 Questo si chiama **fall-through** ed è quasi sempre un errore. Usa sempre `break`!
 
-### Quando `break` non serve?
+### Quando `break` non serve
+
 - Nel `default` se è l'ultimo (esce comunque)
 - Se intendi fare apposta il fall-through (raro, documenta bene!)
 
