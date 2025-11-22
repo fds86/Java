@@ -8,11 +8,14 @@ Esempio:
 
 ```java
 public class Territorio {
-    // Attributi (caratteristiche)
+    // Attributi (caratteristiche): rappresentano lo stato di un oggetto,
+    // cioè i dati che la classe tiene in memoria. 
+    // Ogni attributo ha un tipo (es. int, double, String).
     double superficie;
     int abitanti;
     
-    // Metodi (comportamenti)
+    // Metodi (comportamenti): definiscono i comportamenti della classe,
+    // cioè le operazioni che gli oggetti possono compiere.
     double densita() {
         return abitanti / superficie;
     }
