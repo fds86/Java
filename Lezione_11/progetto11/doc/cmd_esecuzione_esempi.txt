@@ -1,0 +1,11 @@
+# Esempi da eseguire a partire dalla cartella "progetto11"
+"c:\Francesco\Git_Repos\Java\Lezione_11\progetto11";
+
+# Esempio 11_1
+java -cp Progetto11.jar progetto11.Esempio11_1
+
+# Esempio 11_2
+java -cp Progetto11.jar progetto11.Esempio11_2
+
+# Esempio 11_3
+java -cp Progetto11.jar progetto11.Esempio11_3
